@@ -17,6 +17,16 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// userSchema.statics.login = async function(email, password) {
+//   const user = await this.findOne({email})
+
+//   if (!user) {
+//     throw Error("Incorrect email")
+//   }
+
+//     const match = await bcrypt.compare()
+// }
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

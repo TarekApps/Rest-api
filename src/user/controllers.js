@@ -6,7 +6,7 @@ exports.createUser = async (req, res) => {
     const newUser = await User.create(req.body);
     const token = await jwt.sign({ _id: newUser._id }, process.env.SECRET);
     //generate token using newUser._id
-    res.send({ msg: "Successfully created a new user", token });
+    res.send({ msg: newUser, token });
   } catch (error) {
     console.log(error);
     res.send({ err: error });
@@ -20,8 +20,7 @@ exports.readUser = async (req, res) => {
       return u.username;
     });
     res.send({ allUsers: result });
-    console.log(findUsers);
-    res.send({ msg: "Successfully found users" });
+    console.log(result);
   } catch (error) {
     console.log(error);
     res.send({ err: error });
